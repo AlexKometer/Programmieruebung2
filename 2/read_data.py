@@ -1,8 +1,14 @@
 import json
+import os
 
 def load_person_data():
 
-    file = open("../data/person_db.json")
+    cwd = os.getcwd ()
+    print(cwd)
+    try:
+        file = open ("data/person_db.json")
+    except:
+        file = open ("../data/person_db.json")
     person_data = json.load(file)
     return person_data
 
@@ -18,5 +24,8 @@ def get_imgae_path(person_data, person_name):
 
     for eintrag in person_data:
         if person_name == eintrag["lastname"] + ", " +  eintrag["firstname"]:
-            return eintrag["image_path"]
+            return eintrag["picture_path"]
     return None
+
+
+
