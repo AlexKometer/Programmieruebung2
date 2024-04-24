@@ -1,15 +1,9 @@
 import streamlit as st
+from read_data import load_person_data, get_person_list
 
-st.write("# EKG APP")
-st.write("## Versuchsperson auswählen")
+person_dict = load_person_data()
+person_names = get_person_list(person_dict)
 
-# Session State wird leer angelegt, solange er noch nicht existiert
-if 'current_user' not in st.session_state:
-    st.session_state.current_user = 'None'
-
-# Dieses Mal speichern wir die Auswahl als Session State
 st.session_state.current_user = st.selectbox(
     'Versuchsperson',
-    options = ["Nutzer1", "Nutzer2"], key="sbVersuchsperson")
-
-st.write("Der Name ist: ", st.session_state.current_user)
+    options = person_names, key="sbVersuchsperson")
