@@ -13,3 +13,10 @@ def get_person_list(person_data):
     for eintrag in person_data:
         list_of_names.append(eintrag["lastname"] + ", " +  eintrag["firstname"])
     return list_of_names
+
+def get_imgae_path(person_data, person_name):
+
+    for eintrag in person_data:
+        if person_name == eintrag["lastname"] + ", " +  eintrag["firstname"]:
+            return eintrag["image_path"]
+    return None
